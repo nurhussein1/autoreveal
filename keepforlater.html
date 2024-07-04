@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Low Group Cars</title>
+</head>
+<body>
+    <header>
+        <h1>Low Group Cars</h1>
+    </header>
+
+    <div class="container">
+        <h2 id="header">Enter the car you want:</h2>
+
+        <button onclick="toggleHeaderText()">Enter registration instead?</button>
+
+        <div id="registration-form" style="display:none;">
+            <label for="registrationNumber">Registration Number:</label>
+            <input type="text" id="registrationNumber" name="registrationNumber">
+            <button onclick="fetchVehicleDetails()">Get Vehicle Details</button>
+        </div>
+
+        <div id="make-model-form">
+            <label for="make">Make:</label>
+            <select id="make" name="make" onchange="updateModels()">
+                <option value="">Select Make</option>
+                <!-- Make options will be dynamically populated -->
+            </select>
+
+            <label for="model" id="model-label" style="display:none;">Model:</label>
+            <select id="model" name="model" style="display:none;">
+                <!-- Model options will be dynamically populated -->
+            </select>
+        </div>
+
+        <p id="vehicle-details" style="display:none;">Vehicle Details will be displayed here.</p>
+
+        <p>This is where your main content will go.</p>
+        <p>You can add forms, images, text, etc., here.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Your Website. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleHeaderText() {
+            const header = document.getElementById('header');
+            const button = document.querySelector('button');
+            const registrationForm = document.getElementById('registration-form');
+            const makeModelForm = document.getElementById('make-model-form');
+
+            if (header.innerText === 'Enter the car you want:') {
+                header.innerText = 'Enter the registration';
+                button.innerText = 'Enter car model instead?';
+                registrationForm.style.display = 'block';
+                makeModelForm.style.display = 'none';
+            } else {
+                header.innerText = 'Enter the car you want:';
+                button.innerText = 'Enter registration instead?';
+                registrationForm.style.display = 'none';
+                makeModelForm.style.display = 'block';
+            }
+        }
+
+        async function fetchMakes() {
+            // Fetch car makes from an API (use a car API of your choice)
+            // For now, let's use placeholder data
+            const makes = ['VW', 'Toyota', 'Honda'];
+            const makeSelect = document.getElementById('make');
+            makes.forEach(make => {
+                const option = document.createElement('option');
+                option.value = make;
+                option.text = make;
+                makeSelect.appendChild(option);
+            });
+        }
+
+        async function updateModels() {
+            const make = document.getElementById('make').value;
+            const modelSelect = document.getElementById('model');
+            const modelLabel = document.getElementById('model-label');
+            modelSelect.innerHTML = '';
+
+            if (make) {
+                // Fetch car models based on the make from an API
+                // For now, let's use placeholder data
+                let models = [];
+                if (make === 'VW') {
+                    models = ['Golf', 'Polo', 'Passat'];
+                } else if (make === 'Toyota') {
+                    models = ['Corolla', 'Camry', 'Yaris'];
+                } else if (make === 'Honda') {
+                    models = ['Civic', 'Accord', 'Fit'];
+                }
+
+                modelSelect.style.display = 'block';
+                modelLabel.style.display = 'block';
+                models.forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model;
+                    option.text = model;
+                    modelSelect.appendChild(option);
+                });
+            } else {
+                modelSelect.style.display = 'none';
+                modelLabel.style.display = 'none';
+            }
+        }
+
+        async function fetchVehicleDetails() {
+            const registrationNumber = document.getElementById('registrationNumber').value;
+            const apiKey = '3PHZuTPn2a6vPsNxx2d4L1DBZ1v2xAL11i3V5Gdd'; // Your actual API key
+
+            const response = await fetch('https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': apiKey
+                },
+                body: JSON.stringify({ registrationNumber })
+            });
+
+            if (response.ok) {
+                const vehicleDetails = await response.json();
+                displayVehicleDetails(vehicleDetails);
+            } else {
+                alert('Failed to fetch vehicle details. Please check the registration number and try again.');
+            }
+        }
+
+        function displayVehicleDetails(details) {
+            const detailsElement = document.getElementById('vehicle-details');
+            detailsElement.style.display = 'block';
+            detailsElement.innerText = JSON.stringify(details, null, 2);
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchMakes);
+    </script>
+</body>
+</html>
