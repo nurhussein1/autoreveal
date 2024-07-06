@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'CharlesWright';
+    src: url('fonts/CharlesWright-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+#inputReg {
+    text-align: center;
+    border-radius: 10px;
+    border-width: 2px;
+    background-color: yellow;
+    letter-spacing: .2rem;
+    height: 50px;
+    width: 250px;
+    font-size: 35px;
+    font-family: 'CharlesWright';
+    margin-bottom: 20px;
+    /* Add margin to the right of the input box */
+}
+
+h1 {
+    text-align: left;
+}
+
+h2 {
+    font-size: 15px;
+    margin: 0;
+    /* Remove default margin */
+    padding: 0;
+    /* Remove default padding */
+    font-family: sans-serif;
+}
+
+body {
+    margin: 0;
+    /* Remove default margin */
+    padding: 0;
+    /* Remove default padding */
+}
+
+.navbar {
+    font-family: Arial;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #c8c8c8;
+    border-bottom-width: 10px;
+
+}
+
+.nav-links {
+    /* get rid of bullet point in links */
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    width: 20%;
+
+}
+
+.separator {
+    margin: 0;
+    border: none;
+    height: 1px;
+    background-color: #000000;
+}
+
+#btnSubmit {
+    font-family: Arial;
+    color: white;
+    width: 100px;
+    height: 40px;
+    background-color: #3d52a0;
+    border-radius: 5px;
+}
+
+#btnSubmit:hover {
+    background-color: #2a3a70;
+    cursor: pointer;
+    /* Darker shade for hover effect */
+}
