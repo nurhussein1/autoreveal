@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <title>AutoReveal</title>
+    <link rel="icon" type="image/png" href="/Images/white favicon.png">
+    <link rel="shortcut icon" href="/Images/white favicon.png">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="home.html">
+            <img id="headingLogo" src="Images/white logo lgc.png">
+        </a>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div style="padding-top: 10px;">
+        <p>Enter Vehicle Registration:</p>
+        <input id="inputReg" type="text"><br>
+        <button class="cssbuttons-io" onclick="submitReg()">
+            <span>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path fill="currentColor"></path>
+                </svg>
+                Submit
+            </span>
+        </button>
+
+    </div>
+    <hr class="separator">
+
+    <div id="loading" class="loading"></div>
+
+    <div id="errorMessage" style="color: red; padding-top: 10px; display: none;">
+        Please try again. Invalid registration number.
+    </div>
+
+    <div id="results">
+        <div class="result-item">
+            <span class="label">Registration:</span>
+            <span id="lblRegistration" class="value"></span>
+        </div>
+        <div class="result-item">
+            <span class="label">Vehicle Make:</span>
+            <span id="lblMake" class="value"></span>
+        </div>
+        <div class="result-item">
+            <span class="label">Vehicle Colour:</span>
+            <span id="lblColour" class="value"></span>
+        </div>
+        <div class="result-item">
+            <span class="label">Vehicle Tax Status:</span>
+            <span id="lblTaxStatus" class="value"></span>
+        </div>
+        <div class="result-item">
+            <span class="label">Vehicle MOT Status:</span>
+            <span id="lblMOTStatus" class="value"></span>
+        </div>
+        <div class="result-item">
+            <span class="label">Vehicle MOT Expiry Date:</span>
+            <span id="lblMOTExpiryDate" class="value"></span>
+        </div>
+        <div class="result-item">
+            <span class="label">CO2 Emissions:</span>
+            <span id="lblCO2Emissions" class="value"></span>
+        </div>
+        <div class="result-item">
+            <span class="label">Engine Capacity:</span>
+            <span id="lblEngineCapacity" class="value"></span>
+        </div>
+        <div class="result-item">
+            <span class="label">Fuel Type:</span>
+            <span id="lblFuelType" class="value"></span>
+        </div>
+        <div class="result-item">
+            <span class="label">Marked for Export:</span>
+            <span id="lblMarkedForExport" class="value"></span>
+        </div>
+        <div class="result-item">
+            <span class="label">Type Approval:</span>
+            <span id="lblTypeApproval" class="value"></span>
+        </div>
+        <div class="result-item">
+            <span class="label">Year of Manufacture:</span>
+            <span id="lblYearOfManufacture" class="value"></span>
+        </div>
+        <div class="result-item">
+            <span class="label">Tax Due Date:</span>
+            <span id="lblTaxDueDate" class="value"></span>
+        </div>
+        <div class="result-item">
+            <span class="label">Date of Last V5C Issued:</span>
+            <span id="lblDateOfLastV5CIssued" class="value"></span>
+        </div>
+        <div class="result-item">
+            <span class="label">Wheelplan:</span>
+            <span id="lblWheelplan" class="value"></span>
+        </div>
+        <div class="result-item">
+            <span class="label">Month of First Registration:</span>
+            <span id="lblMonthOfFirstRegistration" class="value"></span>
+        </div>
+        <div class="result-item">
+            <span class="label">Maximum load:</span>
+            <span id="lblRevenueWeight" class="value"></span>
+        </div>
+    </div>
+
+    <footer class="footer" >
+        <span>&copy; 2024 AutoReveal. All rights reserved.</span>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
